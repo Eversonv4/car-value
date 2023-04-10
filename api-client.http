@@ -7,10 +7,10 @@ content-type: application/json
 }
 
 ### Find a particular user with a given ID
-GET http://localhost:3000/auth/4
+GET http://localhost:3000/auth/3
 
 ### Find a particular user with a given email
-GET http://localhost:3000/auth?email=soares@gmail.com
+GET http://localhost:3000/auth?email=vinicius@gmail.com
 
 ### Delete a user with a given id
 DELETE http://localhost:3000/auth/555
