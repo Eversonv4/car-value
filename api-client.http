@@ -2,8 +2,23 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "soares@gmail.com",
-  "password": "nascimento132"
+  "email": "ever321@gmail.com",
+  "password": "ever123"
+}
+
+### Get the currently signedin user
+GET http://localhost:3000/auth/whoami
+
+### Sign out
+POST http://localhost:3000/auth/signout
+
+### Authenticate a user
+POST http://localhost:3000/auth/signin
+content-type: application/json
+
+{
+  "email": "ever321@gmail.com",
+  "password": "ever123"
 }
 
 ### Find a particular user with a given ID
@@ -23,3 +38,9 @@ content-type: application/json
   "email": "soares123EMAIL@gmail.com",
   "password": "MeuNovoPassword"
 }
+
+### Set a color
+GET http://localhost:3000/auth/colors/blue
+
+### Get the color
+GET http://localhost:3000/auth/colors
