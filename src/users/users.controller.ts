@@ -10,6 +10,7 @@ import {
   NotFoundException,
   UseInterceptors,
   ClassSerializerInterceptor,
+  UseGuards,
   Session,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -21,33 +22,34 @@ import {
 } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from 'src/users/dtos/user.dto';
 import { AuthService } from './auth.service';
+import { User } from './user.entity';
+import { CurrentUser } from './decorators/current-user.decorator';
+import { CurrentUserInterceptor } from './interceptors/current-user.interceptor';
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('auth')
 @Serialize(UserDto)
+// @UseInterceptors(CurrentUserInterceptor)
 export class UsersController {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
   ) {}
 
+  // @Get('/whoami')
+  // whoAmI(@Session() session: any) {
+  //   return this.usersService.findOne(session.userId);
+  // }
+
   @Get('/whoami')
-  whoAmI(@Session() session: any) {
-    return this.usersService.findOne(session.userId);
+  @UseGuards(AuthGuard)
+  whoAmI(@CurrentUser() currentUser: User) {
+    return currentUser;
   }
 
   @Post('/signout')
   signOut(@Session() session: any) {
     session.userId = null;
-  }
-
-  @Get('/colors/:color')
-  setColorParam(@Param('color') color: string, @Session() session: any) {
-    session.color = color;
-  }
-
-  @Get('/colors')
-  getColor(@Session() session: any) {
-    return session.color;
   }
 
   @Post('/signup')

@@ -38,9 +38,3 @@ content-type: application/json
   "email": "soares123EMAIL@gmail.com",
   "password": "MeuNovoPassword"
 }
-
-### Set a color
-GET http://localhost:3000/auth/colors/blue
-
-### Get the color
-GET http://localhost:3000/auth/colors
