@@ -38,3 +38,18 @@ content-type: application/json
   "email": "soares123EMAIL@gmail.com",
   "password": "MeuNovoPassword"
 }
+
+
+### Create a report
+POST http://localhost:3000/reports
+content-type: application/json
+
+{
+  "brand": "Honda",
+  "model": "Civic",
+  "year": 2009,
+  "price": 10000,
+  "mileage": 2000,
+  "lon": 10.2929,
+  "lat": -10.2929
+}
