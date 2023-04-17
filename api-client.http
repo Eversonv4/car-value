@@ -53,3 +53,11 @@ content-type: application/json
   "lon": 10.2929,
   "lat": -10.2929
 }
+
+### Approve an existing report
+PATCH http://localhost:3000/reports/8
+content-type: application/json
+
+{
+  "approved": true
+}
